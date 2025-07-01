@@ -23,9 +23,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
-    <%= yield %>
+  <body class="mx-auto container my-2">
+    <header class="bg-primary"><%= render "shared/navbar" %></header>
+    <main class="bg-background min-h-screen">
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </main>
   </body>
 </html>
