@@ -1,0 +1,12 @@
+/*
+ * This is the main stylesheet that includes all the CSS for the application.
+ * Tailwind CSS is generated and imported from the builds directory.
+ *
+ *= require_tree ../builds
+ *= require_self
+ */
+
+/* Custom stylesheets */
+@import "./components/index.css";
+@import "./config/index.css";
+@import "./pages/index.css";
