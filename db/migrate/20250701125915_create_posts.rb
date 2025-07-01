@@ -11,6 +11,7 @@ class CreatePosts < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    # Index
     add_index :posts, :hackernews_id, unique: true
     add_index :posts, :score
     add_index :posts, :published_at
