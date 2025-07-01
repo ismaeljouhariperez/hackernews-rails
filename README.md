@@ -46,6 +46,7 @@ erDiagram
     string post_type
     integer score
     integer hackernews_id
+    datetime published_at
   }
 
   COMMENTS {
