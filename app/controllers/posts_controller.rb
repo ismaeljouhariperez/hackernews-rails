@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show]
 
   def index
-    @posts = Post.all
+    @posts = Post.by_score.limit(30)
   end
 
   def show
