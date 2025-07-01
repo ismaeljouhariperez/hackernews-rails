@@ -5,7 +5,7 @@ A simple Hacker News clone built with Ruby on Rails 7.
 Import posts from HackerNews API, vote, comment, and react with emojis.
 
 ![Rails](https://img.shields.io/badge/Rails-7.1.5-red?logo=ruby-on-rails)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-2.7-blue?logo=tailwind-css)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.2-blue?logo=tailwind-css)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql)
 
 ## ✨ Features
@@ -22,7 +22,7 @@ Import posts from HackerNews API, vote, comment, and react with emojis.
 - **Ruby on Rails 7.1.5** - Web framework
 - **PostgreSQL** - Database
 - **Devise** - Authentication
-- **Tailwind CSS 2.7** - Styling
+- **Tailwind CSS 4.2** - Styling
 - **Heroicons 1.2** - Icons
 - **Simple Form** - Forms
 - **HackerNews API** - Data source
@@ -132,7 +132,7 @@ erDiagram
 
 # Or manually start separate processes
 rails server                    # Rails server
-rails tailwindcss:watch        # Tailwind CSS watcher
+rails tailwindcss:watch        # Tailwind v4 CSS watcher
 ```
 
 ### Key Commands
