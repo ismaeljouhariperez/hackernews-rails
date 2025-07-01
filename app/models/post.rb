@@ -1,11 +1,14 @@
 class Post < ApplicationRecord
    # Associations
-   has_many :comments
-   has_many :votes
+   has_many :comments, dependent: :destroy
+   has_many :votes, dependent: :destroy
+   has_many :voters, through: :votes, source: :user
    
    # Validations
    validates :title, presence: true
-   validates :hackernews_id, uniqueness: true
+   validates :author, presence: true
+   validates :hackernews_id, uniqueness: { allow_nil: true }
+   validates :score, presence: true, numericality: { greater_than_or_equal_to: 0 }
    
    # Scopes
    scope :by_score, -> { order(score: :desc) }
