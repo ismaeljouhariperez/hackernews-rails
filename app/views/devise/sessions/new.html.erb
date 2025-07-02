@@ -1,13 +1,11 @@
-<div class="min-h-screen bg-[--color-background] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-background flex items-center justify-center px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full">
     <!-- Header -->
     <!-- Login Form -->
     <div class="bg-white border border-secondary/20 rounded-lg p-8 shadow-sm">
       <h2 class="text-xl text-center mb-6">Log in to your account</h2>
 
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), 
-                          html: { class: "space-y-6" }) do |f| %>
-
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
         <div class="form-inputs space-y-4">
           <%= f.input :email,
                       label: "Email address",
@@ -16,10 +14,10 @@
                       input_html: { 
                         autocomplete: "email",
                         class: "w-full px-3 py-2 border border-secondary/30 rounded-md text-sm 
-                               focus:ring-2 focus:ring-[--color-primary] focus:border-[--color-primary] 
+                               focus:ring-2 focus:ring-primary focus:border-primary 
                                transition-colors"
                       },
-                      label_html: { class: "block text-sm font-medium text-[--color-text] mb-1" },
+                      label_html: { class: "block text-sm font-medium mb-1" },
                       wrapper_html: { class: "mb-4" } %>
 
           <%= f.input :password,
@@ -27,10 +25,10 @@
                       input_html: { 
                         autocomplete: "current-password",
                         class: "w-full px-3 py-2 border border-secondary/30 rounded-md text-sm 
-                               focus:ring-2 focus:ring-[--color-primary] focus:border-[--color-primary] 
+                               focus:ring-2 focus:ring-primary focus:border-primary 
                                transition-colors"
                       },
-                      label_html: { class: "block text-sm font-medium text-[--color-text] mb-1" },
+                      label_html: { class: "block text-sm font-medium mb-1" },
                       wrapper_html: { class: "mb-4" } %>
 
           <% if devise_mapping.rememberable? %>
@@ -39,18 +37,17 @@
                           as: :boolean,
                           boolean_style: :inline,
                           input_html: { 
-                            class: "h-4 w-4 text-[--color-primary] focus:ring-[--color-primary] 
+                            class: "h-4 w-4 text-primary focus:ring-primary 
                                    border-secondary/30 rounded"
                           },
-                          label_html: { class: "ml-2 block text-sm text-[--color-secondary]" },
+                          label_html: { class: "ml-2 block text-sm text-secondary" },
                           wrapper_html: { class: "flex items-center" } %>
             </div>
           <% end %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Log in", 
-                       class: "w-full btn-login text-center justify-center py-3" %>
+          <%= f.button :submit, "Log in", class: "w-full btn-login text-center justify-center py-3" %>
         </div>
       <% end %>
 
