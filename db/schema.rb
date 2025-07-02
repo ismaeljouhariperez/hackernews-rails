@@ -35,8 +35,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_01_135225) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hackernews_id"], name: "index_posts_on_hackernews_id", unique: true
-    t.index ["published_at"], name: "index_posts_on_published_at"
-    t.index ["score"], name: "index_posts_on_score"
   end
 
   create_table "reactions", force: :cascade do |t|
@@ -45,7 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_01_135225) do
     t.bigint "comment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id", "emoji"], name: "index_reactions_on_comment_id_and_emoji"
     t.index ["comment_id"], name: "index_reactions_on_comment_id"
     t.index ["user_id", "comment_id", "emoji"], name: "index_reactions_on_user_id_and_comment_id_and_emoji", unique: true
     t.index ["user_id"], name: "index_reactions_on_user_id"
