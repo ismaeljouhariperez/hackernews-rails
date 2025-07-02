@@ -2,7 +2,6 @@ class Post < ApplicationRecord
    # Associations
    has_many :comments, dependent: :destroy
    has_many :votes, dependent: :destroy
-   has_many :voters, through: :votes, source: :user
    
    # Validations
    validates :title, presence: true
