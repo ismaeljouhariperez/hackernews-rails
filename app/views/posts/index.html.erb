@@ -1,1 +1,21 @@
-<h1>Posts</h1>
+<div class="max-w-[80vw] mx-auto py-2">
+  <!-- Posts -->
+  <% if @posts.any? %>
+    <% @posts.each_with_index do |post, index| %>
+      <%= render 'shared/post_item', post: post, rank: index + 1 %>
+      <% unless index == @posts.count - 1 %>
+        <hr class="border-secondary/10">
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="p-8 text-center text-secondary">
+      <h3 class="text-lg font-medium mb-2">No stories yet</h3>
+      <p class="mb-4">Be the first to submit a story!</p>
+      <% if user_signed_in? %>
+        <%= link_to "Submit Story", new_post_path, class: "btn-primary" %>
+      <% else %>
+        <%= link_to "Login to Submit", new_user_session_path, class: "btn-login" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

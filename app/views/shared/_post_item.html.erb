@@ -1,0 +1,44 @@
+<div class="flex gap-3 py-2 hover:bg-secondary/10 transition-colors">
+
+  <!-- Rank -->
+  <span class="text-secondary text-sm font-mono">
+    <%= rank %>.
+  </span>
+
+  <div class="flex items-start pt-1">
+    <% if user_signed_in? %>
+      <%= link_to "#", method: :post, class: "hover:scale-110 transition-transform" do %>
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.40962 0.585166C7.21057 0.300808 6.78943 0.300807 6.59038 0.585166L0.550713 9.21327C0.318741 9.54466 0.555816 10 0.960328 10H13.0397C13.4442 10 13.6813 9.54466 13.4493 9.21327L7.40962 0.585166Z" fill="#FF6600"/>
+        </svg>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "hover:scale-110 transition-transform" do %>
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.40962 0.585166C7.21057 0.300808 6.78943 0.300807 6.59038 0.585166L0.550713 9.21327C0.318741 9.54466 0.555816 10 0.960328 10H13.0397C13.4442 10 13.6813 9.54466 13.4493 9.21327L7.40962 0.585166Z" fill="#8A8989"/>
+        </svg>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- Post -->
+  <div class="flex flex-col flex-1 min-w-0">
+    <div class="text-sm leading-tight">
+      <%= link_to post.title, post_path(post), class: "link-primary hover:underline" %>
+      <% if post.url.present? %>
+        <%= link_to "(#{URI.parse(post.url).host})", post.url, target: "_blank", class: "text-secondary hover:text-primary text-xs ml-1 transition-colors" %>
+      <% end %>
+    </div>
+
+    <!-- Meta info -->
+    <div class="text-xs text-secondary mt-1">
+      <%= pluralize(post.score, 'point') %> by <span class="font-medium"><%= post.author %></span>
+      <% if post.created_at %>
+        | <%= time_ago_in_words(post.created_at) %> ago
+      <% end %>
+      <% if post.comments.any? %>
+        | <%= link_to "#{pluralize(post.comments.count, 'comment')}", post_path(post), class: "hover:text-primary transition-colors" %>
+      <% end %>
+    </div>
+  </div>
+</div>
