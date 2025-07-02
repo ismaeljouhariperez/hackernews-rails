@@ -137,6 +137,7 @@ GEM
     heroicons-rails (1.2.0)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    htmlbeautifier (1.4.3)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -394,6 +395,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   heroicons-rails (~> 1.2)
+  htmlbeautifier
   importmap-rails
   jbuilder
   kamal

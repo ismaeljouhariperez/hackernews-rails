@@ -20,8 +20,13 @@
   }
 
   .btn-login {
-    @apply bg-[--color-primary] hover:bg-orange-700 text-white px-4 py-2 rounded 
+    @apply bg-primary hover:bg-orange-700 text-white px-4 py-2 rounded cursor-pointer
            transition-colors font-medium text-sm;
+  }
+
+  .btn-reset {
+    @apply bg-red-600 hover:bg-red-500 text-white cursor-pointer
+           border border-[--color-primary] px-3 py-1 rounded transition-colors;
   }
 
   .link-primary {
