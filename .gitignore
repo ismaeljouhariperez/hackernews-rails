@@ -46,6 +46,12 @@ NOTES.md
 *.swo
 *~
 
+# Fichiers de test et configuration temporaires
+test_format.html.erb
+example_format.html.erb
+.prettierrc
+.editorconfig
+
 # Base de données
 *.sqlite3
 *.sqlite3-*
