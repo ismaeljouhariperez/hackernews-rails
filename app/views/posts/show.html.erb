@@ -27,7 +27,7 @@
         <!-- List -->
         <div class="space-y-4 mb-8">
           <% @post.comments.order(created_at: :desc).each do |comment| %>
-            <div class="bg-white border border-secondary/10 rounded-lg p-4">
+            <div class="relative bg-white border border-secondary/10 rounded-lg p-4">
               <div class="flex items-center gap-2 text-sm text-secondary mb-2">
                 <span class="font-medium"><%= comment.user.username %></span>
                 <span>•</span>
@@ -36,6 +36,40 @@
               <div class="text-primary leading-relaxed">
                 <%= simple_format(comment.content) %>
               </div>
+            </div>
+            <div class="flex gap-2">
+              <% if user_signed_in? %>
+                <% @reactions.each do |emoji_name, emoji_value| %>
+                  <% reaction_count = comment.reactions.where(emoji: emoji_name).count %>
+                  <% user_reacted = comment.reactions.exists?(user: current_user, emoji: emoji_name) %>
+                  
+                  <%= button_to post_comment_reactions_path(@post, comment), 
+                                method: :post,
+                                params: { emoji: emoji_name },
+                                class: "flex items-center gap-1 text-sm hover:scale-110 transition-transform px-2 py-1 rounded border-none bg-transparent cursor-pointer #{user_reacted ? 'bg-primary/20 text-primary' : 'bg-secondary/5 hover:bg-primary/10'}" do %>
+                    <span class="text-base">
+                      <%= case emoji_name
+                          when 'thumbs_up' then '👍'
+                          when 'thumbs_down' then '👎'
+                          when 'heart' then '❤️'
+                          when 'fire' then '🔥'
+                          when 'rocket' then '🚀'
+                          when 'eyes' then '👀'
+                          when 'laugh' then '😂'
+                          when 'confused' then '😕'
+                          when 'party' then '🎉'
+                          end %>
+                    </span>
+                    <% if reaction_count > 0 %>
+                      <span class="text-xs"><%= reaction_count %></span>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <div class="text-xs text-secondary">
+                  <%= link_to "Log in to react", new_user_session_path, class: "hover:text-primary transition-colors" %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>

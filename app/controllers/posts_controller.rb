@@ -7,7 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @post.comments.includes(:user, :reactions).recent
+    @comments = @post.comments.recent
+    @reactions = Reaction.emojis
   end
 
   private
