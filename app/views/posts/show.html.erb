@@ -1,1 +1,82 @@
-<h1><%= @post.title %></h1>
+  <div class="mx-auto py-4 max-w-[80vw]">
+
+    <!-- Title -->
+    <h1 class="text-xl font-medium text-primary mb-4 leading-tight">
+      <%= @post.title %>
+    </h1>
+    
+    <!-- Meta info -->
+    <div class="flex flex-wrap items-center gap-1 text-sm text-secondary mb-6">
+      <% if @post.url.present? %>
+        <%= link_to @post.url, target: "_blank", class: "text-secondary hover:text-primary transition-colors break-all" do %>
+          <%= @post.url %>
+        <% end %>
+      <% end %>
+      
+      <span>| story by</span>
+      <span class="font-medium hover:text-primary transition-colors"><%= @post.author %></span>
+      <span>| <%= pluralize(@post.score, 'vote') %> |</span>
+      <span><%= pluralize(@post.comments.count, 'comment') %></span>
+    </div>
+
+    <!-- Comments -->
+    <div class="border-t border-secondary/20 pt-6">
+      <% if @post.comments.any? %>
+        <h3 class="text-lg font-medium text-primary mb-4">Comments</h3>
+        
+        <!-- List -->
+        <div class="space-y-4 mb-8">
+          <% @post.comments.order(created_at: :desc).each do |comment| %>
+            <div class="bg-white border border-secondary/10 rounded-lg p-4">
+              <div class="flex items-center gap-2 text-sm text-secondary mb-2">
+                <span class="font-medium"><%= comment.user.username %></span>
+                <span>•</span>
+                <span><%= time_ago_in_words(comment.created_at) %> ago</span>
+              </div>
+              <div class="text-primary leading-relaxed">
+                <%= simple_format(comment.content) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-secondary mb-6">No comment for this post</p>
+      <% end %>
+
+      <!-- User needs to login to leave a comment -->
+      <% if user_signed_in? %>
+        <div class="bg-white border border-secondary/20 rounded-lg p-6">
+          <h4 class="text-base font-medium text-primary mb-4">Leave a comment</h4>
+          
+          <%= simple_form_for [@post, @comment], html: { class: "space-y-4" } do |f| %>
+            <div class="form-inputs">
+              <%= f.input :content,
+                          label: false,
+                          input_html: { 
+                            class: "w-full px-3 py-2 border border-secondary/30 rounded-md text-sm 
+                                   focus:ring-2 focus:ring-primary focus:border-primary 
+                                   transition-colors resize-vertical",
+                            placeholder: "What are your thoughts?",
+                            rows: 4
+                          },
+                          wrapper_html: { class: "mb-4" } %>
+            </div>
+            
+            <div class="form-actions">
+              <%= f.button :submit, "Leave a comment", class: "btn-primary px-6 py-2" %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="bg-white border border-secondary/20 rounded-lg p-6 text-center">
+          <p class="text-secondary mb-4">Please log in to leave a comment</p>
+          <%= link_to "Log in", new_user_session_path, class: "btn-primary px-6 py-2" %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Back to Home -->
+    <div class="mt-8">
+      <%= link_to "← Back to posts", root_path, class: "text-secondary hover:text-primary transition-colors" %>
+    </div>
+  </div>

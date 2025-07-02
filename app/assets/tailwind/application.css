@@ -11,26 +11,26 @@
 @layer components {
   /* Hacker News style components */
   .btn-primary {
-    @apply bg-[--color-primary] hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-colors;
+    @apply bg-primary cursor-pointer hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-colors;
   }
 
   .btn-upvote {
-    @apply bg-transparent hover:bg-[--color-primary] text-[--color-primary] hover:text-white 
-           border border-[--color-primary] px-3 py-1 rounded transition-colors;
+    @apply bg-transparent hover:bg-primary cursor-pointer text-primary hover:text-white 
+           border border-primary px-3 py-1 rounded transition-colors;
   }
 
   .btn-login {
-    @apply bg-primary hover:bg-orange-700 text-white px-4 py-2 rounded cursor-pointer
+    @apply bg-primary cursor-pointer hover:bg-orange-700 text-white px-4 py-2 rounded cursor-pointer
            transition-colors font-medium text-sm;
   }
 
   .btn-reset {
     @apply bg-red-600 hover:bg-red-500 text-white cursor-pointer
-           border border-[--color-primary] px-3 py-1 rounded transition-colors;
+           border border-primary px-3 py-1 rounded transition-colors;
   }
 
   .link-primary {
-    @apply text-[--color-text] hover:text-[--color-primary] transition-colors;
+    @apply text-[--color-text] hover:text-primary transition-colors;
   }
 
   .text-secondary {
