@@ -3,10 +3,14 @@
   <%= link_to root_path, class: "flex items-center" do %>
     <%= image_tag "logo.svg", alt: "Hacker News", class: "h-10 w-auto" %>
   <% end %>
-  <!-- Logout -->
+
+  <!-- Logout/Login -->
   <% if user_signed_in? %>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "hover:text-white transition-colors" %>
-    <!-- Login -->
+    <%= button_to "Logout", 
+                  destroy_user_session_path, 
+                  method: :delete,
+                  class: "hover:text-white transition-colors bg-transparent border-none cursor-pointer text-inherit font-inherit p-0",
+                  form: { class: "inline" } %>
   <% else %>
     <%= link_to "Login", new_user_session_path, class: "btn-login" %>
   <% end %>
