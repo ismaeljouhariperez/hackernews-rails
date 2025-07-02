@@ -10,12 +10,6 @@
   <% else %>
     <div class="p-8 text-center text-secondary">
       <h3 class="text-lg font-medium mb-2">No stories yet</h3>
-      <p class="mb-4">Be the first to submit a story!</p>
-      <% if user_signed_in? %>
-        <%= link_to "Submit Story", new_post_path, class: "btn-primary" %>
-      <% else %>
-        <%= link_to "Login to Submit", new_user_session_path, class: "btn-login" %>
-      <% end %>
     </div>
   <% end %>
 </div>
